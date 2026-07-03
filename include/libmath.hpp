@@ -6,9 +6,9 @@ namespace libmath
 {
 int addition(int x, int y, int& c)
 {
-    if (y > 0 && x > INT_MAX - y)
+    if (x + y > INT_MAX)
         return 2;
-    if (y < 0 && x < INT_MAX - y)
+    if (x + y < INT_MAX)
         return 2;
 
     c = x + y;
@@ -16,9 +16,9 @@ int addition(int x, int y, int& c)
 }
 int subtraction(int x, int y, int& c)
 {
-    if (y > 0 && x > INT_MAX + y)
+    if (x - y > INT_MAX)
         return 2;
-    if (y < 0 && x < INT_MAX + y)
+    if (x - y < INT_MAX)
         return 2;
 
     c = x - y;
