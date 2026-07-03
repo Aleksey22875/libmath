@@ -18,7 +18,7 @@ int addition(int x, int y, int& c)
 }
 int subtraction(int x, int y, int& c)
 {
-    long long result = 1LL * x + y;
+    long long result = 1LL * x - y;
 
     if(result > INT_MAX || result < INT_MIN)
     {
