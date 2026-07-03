@@ -3,43 +3,59 @@
 
 namespace libmath
 {
-    int addition(int x, int y)
+    int addition(int x, int y, int& c)
     {
         if(y > 0 && x > INT_MAX - y) return 1;
         if(y < 0 && x < INT_MAX - y) return 1;
 
-        return x + y;
+        c = x + y;
+        return 0;
     }
-    int subtraction(int x, int y)
+    int subtraction(int x, int y, int& c)
     {
         if(y > 0 && x > INT_MAX + y) return 1;
         if(y < 0 && x < INT_MAX + y) return 1;
-        return x - y;
+
+        c = x - y;
+        return 0;
     }
-    int multiplication(int x, int y)
+    int multiplication(int x, int y, int& c)
     {
         if(x != 0 && y > INT_MAX / x) return 1;
         if(x != 0 && y < INT_MAX / x) return 1;
-        return x * y;
+        c = x * y;
+        return 0;
     }
-    int power(int x, int y)
+    int power(int x, int y, int& r)
     {
         int c = 1;
         for (int i = 0; i < y; i++)
         {
             if(x != 0 && c > INT_MAX / x) return 1;
-            
+
             c = c * x;
         }
-        return c;
+        r = c;
+        return 0;
     }
-    int factorial( int x)
+    int factorial(int x, int& c)
     {
         if(x == 0 || x == 1)
         {
-            return 1;
+            c = 1;
+            return 0;
         }
-        return x * factorial(x - 1);
+
+        int temp;
+        int status = factorial( x - 1, temp);
+
+        if(status != 0) return 1;
+
+        if(temp > INT_MAX / x) return 1;
+
+
+        c = x * temp;
+        return 0;
     }
     int division(int x, int y, int &c)
     {
