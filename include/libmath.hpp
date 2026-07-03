@@ -5,24 +5,24 @@ namespace libmath
 {
     int addition(int x, int y, int& c)
     {
-        if(y > 0 && x > INT_MAX - y) return 1;
-        if(y < 0 && x < INT_MAX - y) return 1;
+        if(y > 0 && x > INT_MAX - y) return 2;
+        if(y < 0 && x < INT_MAX - y) return 2;
 
         c = x + y;
         return 0;
     }
     int subtraction(int x, int y, int& c)
     {
-        if(y > 0 && x > INT_MAX + y) return 1;
-        if(y < 0 && x < INT_MAX + y) return 1;
+        if(y > 0 && x > INT_MAX + y) return 2;
+        if(y < 0 && x < INT_MAX + y) return 2;
 
         c = x - y;
         return 0;
     }
     int multiplication(int x, int y, int& c)
     {
-        if(x != 0 && y > INT_MAX / x) return 1;
-        if(x != 0 && y < INT_MAX / x) return 1;
+        if(x != 0 && y > INT_MAX / x) return 2;
+        if(x != 0 && y < INT_MAX / x) return 2;
         c = x * y;
         return 0;
     }
@@ -31,7 +31,7 @@ namespace libmath
         int c = 1;
         for (int i = 0; i < y; i++)
         {
-            if(x != 0 && c > INT_MAX / x) return 1;
+            if(x != 0 && c > INT_MAX / x) return 2;
 
             c = c * x;
         }
@@ -49,9 +49,9 @@ namespace libmath
         int temp;
         int status = factorial( x - 1, temp);
 
-        if(status != 0) return 1;
+        if(status != 0) return 2;
 
-        if(temp > INT_MAX / x) return 1;
+        if(temp > INT_MAX / x) return 2;
 
 
         c = x * temp;
