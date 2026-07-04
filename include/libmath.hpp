@@ -6,24 +6,24 @@ int addition(int x, int y, int& c)
 {
     long long result = 1LL * x + y;
 
-    if(result > INT_MAX || result < INT_MIN)
+    if (result > INT_MAX || result < INT_MIN)
     {
         return 2;
     }
 
-    c = (int) result;
+    c = (int)result;
     return 0;
 }
 int subtraction(int x, int y, int& c)
 {
     long long result = 1LL * x - y;
 
-    if(result > INT_MAX || result < INT_MIN)
+    if (result > INT_MAX || result < INT_MIN)
     {
         return 2;
     }
 
-    c = (int) result;
+    c = (int)result;
     return 0;
 }
 int multiplication(int x, int y, int& c)
@@ -86,11 +86,12 @@ int division(int x, int y, int& c)
     if (y == 0)
     {
         return -1;
+    }
     if (x == INT_MIN && y == -1)
     {
         return 2;
     }
-        c = x / y;
-        return 0;
+    c = x / y;
+    return 0;
 }
 } // namespace libmath
