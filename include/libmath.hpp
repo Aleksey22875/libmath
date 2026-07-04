@@ -86,11 +86,11 @@ int division(int x, int y, int& c)
     if (y == 0)
     {
         return -1;
-    }
-    else
+    if (x == INT_MIN && y == -1)
     {
+        return 2;
+    }
         c = x / y;
         return 0;
-    }
 }
 } // namespace libmath
