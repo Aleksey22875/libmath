@@ -1,5 +1,3 @@
-#include "libmath.h"
-
 #include <climits>
 
 namespace libmath
