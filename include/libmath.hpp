@@ -80,7 +80,7 @@ int division(int x, int y)
 {
     if (y == 0)
     {
-        throw std::domain_error("Devision by zero");
+        throw std::domain_error("Division by zero");
     }
     if (x == INT_MIN && y == -1)
     {
