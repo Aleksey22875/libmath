@@ -1,97 +1,92 @@
 #include <climits>
 
+#include <stdexcept>
+
 namespace libmath
 {
-int addition(int x, int y, int& c)
+int addition(int x, int y)
 {
     long long result = 1LL * x + y;
 
     if (result > INT_MAX || result < INT_MIN)
     {
-        return 2;
+        throw
+        std::overflow_error("Integer overflow");
     }
 
-    c = (int)result;
-    return 0;
+    return static_cast<int>(result);
 }
-int subtraction(int x, int y, int& c)
+int subtraction(int x, int y)
 {
     long long result = 1LL * x - y;
 
     if (result > INT_MAX || result < INT_MIN)
     {
-        return 2;
+        throw
+        std::overflow_error("Integer overflow");
     }
 
-    c = (int)result;
-    return 0;
+    return static_cast<int>(result);
 }
-int multiplication(int x, int y, int& c)
+int multiplication(int x, int y)
 {
-    if (x == 0 || y == 0)
-    {
-        c = 0;
-        return 0;
-    }
+    long long result = 1LL * x * y;
 
     if (x > 0)
     {
-        if (y > INT_MAX / x || y < INT_MIN / x)
-            return 2;
-    }
-    else
-    {
-        if (y < INT_MAX / x || y > INT_MIN / x)
-            return 2;
+        if (result > INT_MAX || result < INT_MIN)
+            throw
+        std::overflow_error("Integer overflow");
     }
 
-    c = x * y;
-    return 0;
+    return static_cast<int>(result);
 }
-int power(int x, int y, int& r)
+int power(int x, int y)
 {
     int c = 1;
     for (int i = 0; i < y; i++)
     {
         if (x != 0 && c > INT_MAX / x)
-            return 2;
+            throw
+        std::overflow_error("Integer overflow");
 
         c = c * x;
     }
-    r = c;
-    return 0;
+    return static_cast<int>(c);
 }
-int factorial(int x, int& c)
+int factorial(int x)
 {
-    if (x == 0 || x == 1)
+    if (x < 0)
     {
-        c = 1;
-        return 0;
+        throw
+        std::domain_error("Factorial of negative number");
     }
 
-    int temp;
-    int status = factorial(x - 1, temp);
+    if (x == 0 || x == 1)
+    {
+        return 1;
+    }
 
-    if (status != 0)
-        return 2;
+    int temp = factorial(x - 1);
 
     if (temp > INT_MAX / x)
-        return 2;
+        throw
+        std::overflow_error("Integer overflow");
 
-    c = x * temp;
-    return 0;
+    return x * temp;
 }
-int division(int x, int y, int& c)
+int division(int x, int y)
 {
     if (y == 0)
     {
-        return -1;
+        throw
+        std::domain_error("Devision by zero");
     }
     if (x == INT_MIN && y == -1)
     {
-        return 2;
+        throw
+        std::overflow_error("Integer overflow");
     }
-    c = x / y;
-    return 0;
+    return x / y;
 }
 } // namespace libmath
